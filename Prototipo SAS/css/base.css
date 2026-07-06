@@ -1,0 +1,27 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: Poppins;
+    color: white;
+}
+
+h2 {
+    color: #334155;
+    font-size: 26px;
+}
+
+h3 {
+    color: #1E3A8A;
+}
+
+h4 {
+    color: #10B981;
+}
+
+p, a, button {
+    font-family: "Open Sans";
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}

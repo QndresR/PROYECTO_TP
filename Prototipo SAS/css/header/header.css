@@ -1,0 +1,31 @@
+header {
+    background: linear-gradient(to right, #1E3A8A, #3B82F6);
+    height: 400px;
+}
+
+header p {
+    color: white;
+}
+
+#header-info h1, #header-info p{
+    margin-bottom: 16px;
+}
+
+#header-info button { 
+    background-color: #3B82F6;
+    height: 50px;
+    width: 150px;
+    border-radius: 50px;
+    color: white;
+    font-family: inter;
+    margin-top: 10px
+}
+
+#header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 150px;
+}
+
