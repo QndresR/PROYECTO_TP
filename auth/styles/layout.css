@@ -1,0 +1,92 @@
+h2 {
+    color: #334155;
+    cursor: default;
+    margin-bottom: 50px;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F9FA;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 370px;             
+    margin: 200px auto 40px auto;  
+    position: relative;            
+    min-height: 450px;            
+}
+
+.auth-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 370px;
+    position: absolute;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1.5s ease, transform 0.6s ease;
+}
+
+.auth-box.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, select {
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid rgb(192, 192, 192);
+    background: transparent;
+}
+
+input[type="submit"] {
+    background-color: #c0c0c0;
+    border: none;
+    border-radius: 40px;
+    width: 150px;
+    color: white;
+    transition: background-color 0.6s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #666666;
+}
+
+.input-submit {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#already-have-account, #not-have-account {
+    color: black;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+input[type="submit"], button, a {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="styles/main.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,26 +15,30 @@
     </head>
     <body>
         <nav>
-            <img src="assets/Logo 2000x2000.png" alt="logo" width="50px">
-
-            <div class="nav-links">
-                <a href="../Prototipo SAS/index.html">Inicio</a>
+            <div class="nav-name-proyect nav-elements">
+            <h3>School Assistence System</h3>
+            </div>
+            <div class="nav-links nav-elements">
+                <a href="../landing/index.html">Inicio</a>
                 <a href="">Funciones</a>
                 <a href="">Contacto</a>
             </div>
+
+            <div class="nav-name-group nav-elements">
+                <h4>White Palace Co.</h4>
+            </div>
+            
         </nav>
 
         <main class="container">
-            <section class="box-register">
+            <section id="form-register" class="auth-box hidden">
                 <h2>Registrarse</h2>
                 <form action="#" id="register-form">
-                    <label for="username"></label>
-                    <input type="text" id="username" placeholder="Nombre de Usuario" />
 
                     <div class="input-email">
                         <label for="email"></label>
                         <input type="text" id="email" />
-
+                        
                         <select name="domain-email" id="domain">
                             <option value="">alumnos.sip.cl</option>
                         </select>
@@ -51,8 +55,34 @@
                     </div>
                 </form>
                 
-                <a href="" id="already-have-account">¿Ya tienes una cuenta?</a>
+                <a href="" id="already-have-account" class="switch-text">¿Ya tienes una cuenta?</a>
+            </section>
+
+            <section id="form-login" class="auth-box">
+                <h2>Iniciar Sesión</h2>
+                <form action="#" id="login-form">
+
+                    <div class="input-email">
+                        <label for="email"></label>
+                        <input type="text" id="email" />
+                        
+                        <select name="domain-email" id="domain">
+                            <option value="">alumnos.sip.cl</option>
+                        </select>
+                    </div>
+
+                    <label for="password"></label>
+                    <input type="password" id="password" placeholder="Contraseña"/>
+
+                    <div class="input-submit">
+                    <input type="submit" />
+                    </div>
+                </form>
+
+                <a href="" id="not-have-account" class="switch-text">¿No tienes una cuenta?</a>
             </section>
         </main>
+
+        <script src="script.js""></script>
     </body>
 </html>

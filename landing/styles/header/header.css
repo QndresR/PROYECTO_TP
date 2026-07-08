@@ -1,10 +1,10 @@
 header {
-    background: linear-gradient(to right, #1E3A8A, #3B82F6);
+    background: linear-gradient(to right, #0F172A, #334155);
     height: 400px;
 }
 
 header p {
-    color: white;
+    color: rgb(227, 227, 227);
 }
 
 #header-info h1, #header-info p{
@@ -12,11 +12,11 @@ header p {
 }
 
 #header-info button { 
-    background-color: #3B82F6;
+    background-color: #E2E8F0;
     height: 50px;
     width: 150px;
     border-radius: 50px;
-    color: white;
+    color: #0F172A;
     font-family: inter;
     margin-top: 10px
 }
