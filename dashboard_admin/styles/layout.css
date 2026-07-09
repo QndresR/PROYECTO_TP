@@ -1,0 +1,38 @@
+.wrapper {
+    background-color: #fff;
+    height: 90vh;
+    border-radius: 16px;
+    flex: 4;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.header-dashboard { 
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1;
+}
+
+.header-sect-dash {
+    background-color: #ffffff;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 30%;
+    border-radius: 16px;
+    padding: 10px;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), 0 1px 8px rgba(0, 0, 0, 0.02);
+}
+
+.icons-dashboard-header {
+    height: 50%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

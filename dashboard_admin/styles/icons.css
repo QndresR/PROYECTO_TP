@@ -1,0 +1,23 @@
+.bi {
+    color: rgb(71, 71, 71);
+}
+
+.icons-dashboard-header {
+    font-size: 50px;
+}
+
+.header-sect-dash .bi-file-earmark-person-fill {
+    color: rgb(73, 73, 73);
+}
+
+.bi-file-bar-graph-fill {
+    color: rgb(211, 175, 16);
+}
+
+.bi-file-arrow-up-fill {
+    color: rgb(17, 154, 26);
+}
+
+.bi-file-arrow-down-fill {
+    color: rgb(185, 20, 20);
+}
