@@ -9,7 +9,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #F7F9FA;
+    background: linear-gradient(to bottom, #F1F5F9 90%, #ededed );
     margin: 0;
 }
 
@@ -52,6 +52,10 @@ input, select {
     background: transparent;
 }
 
+input:focus, select:focus {
+    outline:none;
+}
+
 input[type="submit"] {
     background-color: #c0c0c0;
     border: none;
@@ -82,6 +86,14 @@ input[type="submit"], button, a {
     cursor: pointer;
 }
 
+#domain {
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: transparent;
+    border-bottom: 2px solid rgb(192, 192, 192);
+    cursor: pointer;
+    appearance: none;
+}
 
 
 
