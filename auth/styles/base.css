@@ -5,3 +5,14 @@ h1, h2, button {
 a, input, option, label, h4, h5, h6 {
     font-family: "Open Sans";
 }
+
+h5 {
+    font-family: Poppins;
+    font-size: 30px;
+    font-weight: 500;
+    color: rgb(192, 195, 200);
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}

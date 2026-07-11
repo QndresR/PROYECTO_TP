@@ -4,6 +4,15 @@ header {
     height: 400px;
 }
 
+@media (max-width: 768px) {
+    header {
+        width: 100%;
+        padding: 20px;
+        min-height: 400px ;
+        height: auto;
+    }
+}
+
 header p {
     color: rgb(227, 227, 227);
 }
@@ -34,5 +43,36 @@ header p {
     justify-content: center;
     padding-top: 150px;
     text-align: center;
+}
+
+.adapt-phone-title {
+    display: none;
+}
+
+@media(max-width: 768px) {
+
+    #header-info {
+        justify-content: center;
+        align-items: center;
+        padding-top: 70px;
+    }
+
+    #header-info h1{
+        display: none;
+    }
+
+    #header-info p {
+        display: none;
+    }
+
+    #header-info button {
+        display: none;
+    }
+
+    #header-info .adapt-phone-title {
+        display: block;
+        font-size: 50px;
+        margin-bottom: 10px;
+    }
 }
 

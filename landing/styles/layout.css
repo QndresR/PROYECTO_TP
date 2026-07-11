@@ -3,7 +3,7 @@ main p {
 }
 
 .main-section {
-    height: 300px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,7 @@ main p {
 }
 
 .box-functions {
-    width: 300px;
+    max-width: 300px;
     height: 200px;
     background-color: #ffffff;
     margin: 10px;
@@ -34,15 +34,28 @@ main p {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .function-up {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #funcionalidades {
+        padding: 30px 10px;
+    }
+}
+
 .box-functions p {
     margin-top: 20px;
 }
 
 #funcionalidades {
     background-color: #fafcff;
-    height: 600px;
+    min-height: 600px;
     align-items: center;
-    padding: 10px 20px;
+    padding: 25px 10px;
     justify-content: center;
 }
 
@@ -50,15 +63,14 @@ main p {
     margin-bottom: 30px;
 }
 
-#function-up {
+.function-up {
     display: flex;
 }
 
 
 
 #beneficios {
-    height: 300px;
-    padding: 20px;
+    padding: 30px;
     align-items: center;
 }
 
@@ -77,4 +89,18 @@ main p {
 
 #beneficios-up {
     display: flex;
+}
+
+@media (max-width: 768px) {
+    #beneficios{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 20px;
+    }
+
+    #beneficios-up {
+        flex-direction: column;
+        align-items: center;
+    }
 }

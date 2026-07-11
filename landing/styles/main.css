@@ -13,4 +13,18 @@
 
 body {
     background-color: #F1F5F9;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+  body {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+    * {
+        width: 100%;
+    }
 }
