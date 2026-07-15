@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="https://i.imgur.com/eE8kP1K.png" alt="S.A.S Logo" width="220px">
-</p>
 
 <h1 align="center">S.A.S — School Attendance System</h1>
 
