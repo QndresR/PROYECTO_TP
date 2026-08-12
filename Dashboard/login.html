@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.A.S - Iniciar Sesión</title>
+
+    <!-- Enlaces a fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        h1,
+        h2,
+        h3,
+        button {
+            font-family: Poppins, sans-serif;
+        }
+
+        a,
+        input,
+        option,
+        label,
+        h4,
+        h5,
+        h6 {
+            font-family: "Open Sans", sans-serif;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #334155;
+            cursor: default;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #F1F5F9 90%, #ededed);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 100%;
+        }
+
+        .auth-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 370px;
+            background: transparent;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        input {
+            height: 40px;
+            border: none;
+            border-bottom: 2px solid rgb(192, 192, 192);
+            background: transparent;
+            font-size: 15px;
+            padding: 0 5px;
+        }
+
+        input:focus {
+            outline: none;
+            border-bottom: 2px solid #334155;
+        }
+
+        input[type="submit"] {
+            background-color: #c0c0c0;
+            border: none;
+            border-radius: 40px;
+            width: 150px;
+            color: white;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #666666;
+        }
+
+        .input-submit {
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Mensaje de error discreto acorde al diseño */
+        .error-msg {
+            color: #dc3545;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+        <section id="form-login" class="auth-box">
+            <h2>Iniciar Sesión</h2>
+
+            <div id="mensajeError" class="error-msg">Usuario o contraseña incorrectos.</div>
+
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Usuario (admin)" required />
+                <input type="password" id="password" placeholder="Contraseña" required />
+
+                <div class="input-submit">
+                    <input type="submit" value="Iniciar Sesión" />
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Lógica de funcionalidad y seguridad -->
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const usuarioIngresado = document.getElementById('username').value.trim();
+            const passwordIngresado = document.getElementById('password').value;
+            const mensajeError = document.getElementById('mensajeError');
+
+            const usuarioCorrecto = "admin";
+            const passwordCorrecto = "admin123";
+
+            if (usuarioIngresado === usuarioCorrecto && passwordIngresado === passwordCorrecto) {
+                mensajeError.style.display = 'none';
+
+                // Generar sesión activa
+                localStorage.setItem('sesionSAS', 'activa');
+                localStorage.setItem('usuarioActivo', 'Administrador');
+
+                // Redirigir al dashboard principal en la misma carpeta
+                window.location.href = 'index.html';
+            } else {
+                mensajeError.style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

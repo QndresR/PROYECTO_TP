@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Responsive.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+    
+        .stat-card-sas {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #2F3542;
+        }
+    
+        .stat-card-sas h5 {
+            color: #6c757d;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+    
+        .stat-card-sas h2 {
+            font-size: 2.2rem;
+            color: #333;
+        }
+    
+        .stat-card-sas p {
+            color: #198754;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+    
+    <div class="sas-container" style="background: transparent; box-shadow: none;">
+        <h2>Dashboard de Rendimiento S.A.S</h2>
+    
+        <div class="stats-grid">
+            <div class="stat-card-sas">
+                <h5>Tiempo Pedagógico Ahorrado</h5>
+                <h2>07:45 min</h2>
+                <p>Promedio por curso hoy</p>
+            </div>
+            <div class="stat-card-sas">
+                <h5>Eficacia del Picking (1er intento)</h5>
+                <h2>96.5%</h2>
+                <p>Supera la meta del 95%</p>
+            </div>
+            <div class="stat-card-sas">
+                <h5>Inasistencias Injustificadas</h5>
+                <h2 style="color: #dc3545;">12</h2>
+                <p style="color: #6c757d;">Reporte enviado a apoderados</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

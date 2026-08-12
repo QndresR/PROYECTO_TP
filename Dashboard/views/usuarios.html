@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../responsive.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <style>
+        .sas-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+    
+        .table-sas {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+    
+        .table-sas th {
+            text-align: left;
+            color: #6c757d;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+    
+        .table-sas td {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+    
+        .badge-active {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    
+        .badge-blocked {
+            background-color: #f8d7da;
+            color: #842029;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    
+        .badge-warning {
+            background-color: #fff3cd;
+            color: #664d03;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    
+        .btn-bloquear {
+            background-color: #dc3545;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            border: none;
+        }
+    
+        .btn-reactivar {
+            background-color: #0d6efd;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            border: none;
+        }
+    </style>
+    
+    <div class="sas-container">
+        <h2>Gestión de Estudiantes y Credenciales</h2>
+        <p>Administración de tarjetas NFC y registro facial biométrico.</p>
+    
+        <table class="table-sas">
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>Estado Tarjeta NFC</th>
+                    <th>Registro Facial</th>
+                    <th>Acción Rápida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Camilo Mori</strong><br><small>3° Medio B</small></td>
+                    <td><span class="badge-active">Vinculada y Activa</span></td>
+                    <td><span class="badge-active">Completado (98% precisión)</span></td>
+                    <td><button class="btn-bloquear">Bloquear NFC</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Sebastian Pereira</strong><br><small>3° Medio B</small></td>
+                    <td><span class="badge-active">Vinculada y Activa</span></td>
+                    <td><span class="badge-active">Completado (99% precisión)</span></td>
+                    <td><button class="btn-bloquear">Bloquear NFC</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Manuel Ibañez</strong><br><small>3° Medio B</small></td>
+                    <td><span class="badge-blocked">Bloqueada temporalmente</span></td>
+                    <td><span class="badge-active">Completado (95% precisión)</span></td>
+                    <td><button class="btn-reactivar">Reactivar NFC</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Felipe Gutierrez</strong><br><small>3° Medio B</small></td>
+                    <td><span class="badge-active">Vinculada y Activa</span></td>
+                    <td><span class="badge-warning">Pendiente de calibración</span></td>
+                    <td><button class="btn-bloquear">Bloquear NFC</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Kenny Muñoz</strong><br><small>3° Medio B</small></td>
+                    <td><span class="badge-active">Vinculada y Activa</span></td>
+                    <td><span class="badge-active">Completado (97% precisión)</span></td>
+                    <td><button class="btn-bloquear">Bloquear NFC</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Dangelo Pinto</strong><br><small>3° Medio B</small></td>
+                    <td><span class="badge-blocked">Reportada como perdida</span></td>
+                    <td><span class="badge-active">Completado (96% precisión)</span></td>
+                    <td><button class="btn-reactivar">Asignar Nueva NFC</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
