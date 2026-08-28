@@ -1,18 +1,41 @@
 <style>
-    main {
-        width: 100%;
-        height: calc(100% - 3rem); /* Ocupa el alto restante */
-        overflow-x: auto; /* Evita el desbordamiento horizontal en pantallas pequeñas */
-        background: #ffffff;
-        border-radius: 8px;
-    }
+    #container-views {
+    align-items: flex-start; /* Evita que el contenedor estire el módulo main a lo alto */
+}
 
-    /* Tabla adaptable */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        text-align: left;
-    }
+main {
+    width: 100%;
+    height: 100%;               /* Permite que la tarjeta reduzca su alto */  /* Evita que contenedores Flex externos la estiren */
+    background: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;           /* Mantiene los bordes redondeados limpios */
+}
+
+
+
+/* El div contenedor de la tabla absorbe el espacio disponible */
+main > div:first-child {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* El footer se fija en la parte inferior de la tarjeta */
+.table-footer {
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    background-color: #ffffff;
+}
 
     thead th {
         background-color: #f8fafc;
@@ -39,6 +62,8 @@
         font-size: 20px;
         margin-right: 20px;
         cursor: pointer;
+        background: transparent;
+        border: none;
     }
 
     /* Imágenes de usuario */
@@ -50,32 +75,79 @@
         display: block;
     }
 
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 24px;
+    /* Footer con botón principal */
+    .table-footer {
+    padding: 0.5rem 1rem;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    background-color: #ffffff;
+}
+
+    .btn-add-user {
+        background: #2563eb;
+        color: #ffffff;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
         cursor: pointer;
-        color: #64748b;
-    }
-
-    .form-group {
-        margin-bottom: 1rem;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.2s ease;
     }
 
-    .form-group label {
-        font-size: 0.875rem;
+    .btn-add-user:hover {
+        background: #1d4ed8;
+    }
+
+    /* Estilos base Modales */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Modal Eliminar */
+    .modal-content {
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .modal-content h3 {
+        margin-top: 0;
+        color: #1e293b;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .modal-content p {
         color: #64748b;
-        margin-bottom: 0.25rem;
-    }
-
-    .form-group input {
-        padding: 0.5rem;
-        border: 1px solid #cbd5e1;
-        border-radius: 4px;
-        font-size: 1rem;
+        margin: 1rem 0 1.5rem;
     }
 
     .form-actions {
@@ -91,6 +163,162 @@
         padding: 0.5rem 1rem;
         border-radius: 4px;
         cursor: pointer;
+        color: #334155;
+    }
+
+    .btn-delete-confirm {
+        background: #ef4444;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .btn-delete-confirm:hover {
+        background: #dc2626;
+    }
+
+    /* Modal Añadir / Información Alumno */
+    .modal-card {
+        background: #ffffff;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 720px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+
+    .modal-header-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+
+    .title-icon-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .icon-badge {
+        background: #eff6ff;
+        color: #2563eb;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .modal-body-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 0.25rem;
+    }
+
+    .form-group input, .form-group select {
+        padding: 0.5rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+
+    .form-group input[readonly] {
+        background-color: #f8fafc;
+        color: #334155;
+        cursor: default;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 10px;
+    }
+
+    .section-subtitle {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #475569;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 0.5rem;
+    }
+
+    .nfc-banner {
+        background: #eff6ff;
+        border-radius: 8px;
+        padding: 1rem;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .nfc-banner.linked {
+        background: #f0fdf4;
+    }
+
+    .nfc-banner.linked .icon-badge {
+        background: #ffffff;
+        color: #16a34a;
+    }
+
+    .nfc-banner-text h4 {
+        margin: 0;
+        font-size: 0.875rem;
+        color: #1e293b;
+    }
+
+    .nfc-banner-text p {
+        margin: 4px 0 0;
+        font-size: 0.75rem;
+        color: #64748b;
+    }
+
+    .nfc-scan-area {
+        border: 2px dashed #cbd5e1;
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #64748b;
+    }
+
+    .nfc-scan-area.linked {
+        border: 2px solid #bbf7d0;
+        background-color: #f0fdf4;
+    }
+
+    .nfc-scan-area.linked i {
+        color: #16a34a;
+    }
+
+    .nfc-link-later {
+        margin-top: 0.75rem;
+        font-size: 0.75rem;
+        color: #64748b;
+        text-align: center;
     }
 
     .btn-save {
@@ -100,86 +328,268 @@
         padding: 0.5rem 1rem;
         border-radius: 4px;
         cursor: pointer;
+        font-weight: 600;
     }
 </style>
 
-
 <!--Datos usuarios-->
 <main>
-    <table>
-        <thead>
-            <tr>
-                <!--Imagenes usuarios-->
-                <th>Foto</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Curso</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Manuel" /></td>
-                <td>Manuel Elias</td>
-                <td>Ibañez Silvestre</td>
-                <td>3° Medio B</td>
-                <td>
-                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
-                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Camilo" /></td>
-                <td>Camilo Antonio</td>
-                <td>Vasquez Mori</td>
-                <td>3° Medio B</td>
-                <td>
-                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
-                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Sebastian" /></td>
-                <td>Sebastian Andres</td>
-                <td>Pereira Ramirez</td>
-                <td>3° Medio B</td>
-                <td>
-                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
-                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Dangelo" /></td>
-                <td>Dangelo Miguel Angel</td>
-                <td>Pinto Hernandez</td>
-                <td>3° Medio B</td>
-                <td>
-                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
-                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Felipe" /></td>
-                <td>Felipe</td>
-                <td>Gutierrez</td>
-                <td>3° Medio B</td>
-                <td>
-                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
-                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Kenny" /></td>
-                <td>Kenny</td>
-                <td>Muñoz Quiroz</td>
-                <td>3° Medio B</td>
-                <td>
-                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
-                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Curso</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Manuel" /></td>
+                    <td>Manuel Elias</td>
+                    <td>Ibañez Silvestre</td>
+                    <td>3° Medio B</td>
+                    <td>
+                        <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                        <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Camilo" /></td>
+                    <td>Camilo Antonio</td>
+                    <td>Vasquez Mori</td>
+                    <td>3° Medio B</td>
+                    <td>
+                        <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                        <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Sebastian" /></td>
+                    <td>Sebastian Andres</td>
+                    <td>Pereira Ramirez</td>
+                    <td>3° Medio B</td>
+                    <td>
+                        <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                        <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Dangelo" /></td>
+                    <td>Dangelo Miguel Angel</td>
+                    <td>Pinto Hernandez</td>
+                    <td>3° Medio B</td>
+                    <td>
+                        <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                        <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Felipe" /></td>
+                    <td>Felipe</td>
+                    <td>Gutierrez</td>
+                    <td>3° Medio B</td>
+                    <td>
+                        <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                        <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Kenny" /></td>
+                    <td>Kenny</td>
+                    <td>Muñoz Quiroz</td>
+                    <td>3° Medio B</td>
+                    <td>
+                        <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                        <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    
+    <!-- Footer con el botón para añadir usuario -->
+    <div class="table-footer">
+        <button id="btn-open-add-modal" class="btn-add-user">
+            <i class="bi bi-plus-lg"></i> Añadir Alumno
+        </button>
+    </div>
+
+    <!-- Popup / Modal de Confirmación de Eliminación -->
+    <div id="modal-delete" class="modal-overlay">
+        <div class="modal-content">
+            <h3>¿Eliminar usuario?</h3>
+            <p>¿Estás seguro de que deseas eliminar a <strong id="delete-user-name">este usuario</strong>? Esta acción no se puede deshacer.</p>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" id="btn-cancel-delete">Cancelar</button>
+                <button type="button" class="btn-delete-confirm" id="btn-confirm-delete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup / Modal Añadir Alumno & NFC -->
+    <div id="modal-add-user" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header-title">
+                <div class="title-icon-group">
+                    <div class="icon-badge">
+                        <i class="bi bi-person"></i>
+                    </div>
+                    <h3 style="margin:0; font-size: 1.1rem; color: #1e293b;">Añadir Alumno</h3>
+                </div>
+                <i class="bi bi-x-lg close-btn-add" style="cursor: pointer; color: #64748b;"></i>
+            </div>
+
+            <form id="form-add-user">
+                <div class="modal-body-grid">
+                    <!-- Columna Izquierda: Datos Personales -->
+                    <div>
+                        <div class="section-subtitle">DATOS PERSONALES</div>
+                        
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input type="text" id="add-nombres" placeholder="Ingrese los nombres" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input type="text" id="add-apellidos" placeholder="Ingrese los apellidos" required />
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label>RUT</label>
+                                <input type="text" id="add-rut" placeholder="Ej: 21.345.678-9" />
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label>Curso</label>
+                                <select id="add-curso" required>
+                                    <option value="" disabled selected>Seleccione curso</option>
+                                    <option value="7° Básico A">7° Básico A</option>
+                                    <option value="7° Básico B">7° Básico B</option>
+                                    <option value="7° Básico C">7° Básico C</option>
+                                    <option value="8° Básico A">8° Básico A</option>
+                                    <option value="8° Básico B">8° Básico B</option>
+                                    <option value="8° Básico C">8° Básico C</option>
+                                    <option value="1° Medio A">1° Medio A</option>
+                                    <option value="1° Medio B">1° Medio B</option>
+                                    <option value="1° Medio C">1° Medio C</option>
+                                    <option value="2° Medio A">2° Medio A</option>
+                                    <option value="2° Medio B">2° Medio B</option>
+                                    <option value="2° Medio C">2° Medio C</option>
+                                    <option value="3° Medio A">3° Medio A</option>
+                                    <option value="3° Medio B">3° Medio B</option>
+                                    <option value="3° Medio C">3° Medio C</option>
+                                    <option value="4° Medio A">4° Medio A</option>
+                                    <option value="4° Medio B">4° Medio B</option>
+                                    <option value="4° Medio C">4° Medio C</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Tarjeta NFC -->
+                    <div>
+                        <div class="section-subtitle">VINCULAR CON TARJETA NFC</div>
+
+                        <div class="nfc-banner">
+                            <div class="icon-badge" style="background: #ffffff;">
+                                <i class="bi bi-credit-card-2-front-fill"></i>
+                            </div>
+                            <div class="nfc-banner-text">
+                                <h4>Vincule al alumno con su tarjeta NFC</h4>
+                                <p>Para continuar, acerque la tarjeta NFC al lector para escanear y registrar el UID.</p>
+                            </div>
+                        </div>
+
+                        <div class="nfc-scan-area" id="nfc-status-box">
+                            <i class="bi bi-wifi"></i>
+                            <span id="nfc-status-text" style="font-weight: 600; color: #334155;">Esperando tarjeta...</span>
+                            <small>Acerquela al lector NFC</small>
+                            <input type="hidden" id="add-nfc-uid" value="" />
+                        </div>
+
+                        <div class="nfc-link-later">
+                            <i class="bi bi-question-circle"></i> ¿No tienes la tarjeta? <a href="#" id="link-later-btn">Registrar más tarde</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions" style="margin-top: 1.5rem;">
+                    <button type="button" class="btn-cancel" id="btn-cancel-add">Cancelar</button>
+                    <button type="submit" class="btn-save">Agregar Alumno</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup / Modal Ver Información Alumno (Tarjeta Vinculada) -->
+    <div id="modal-view-user" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header-title">
+                <div class="title-icon-group">
+                    <div class="icon-badge">
+                        <i class="bi bi-person-check-fill"></i>
+                    </div>
+                    <h3 style="margin:0; font-size: 1.1rem; color: #1e293b;">Información del Alumno</h3>
+                </div>
+                <i class="bi bi-x-lg close-btn-view" style="cursor: pointer; color: #64748b;"></i>
+            </div>
+
+            <div class="modal-body-grid">
+                <!-- Columna Izquierda: Datos Personales (Lectura) -->
+                <div>
+                    <div class="section-subtitle">DATOS PERSONALES</div>
+                    
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" id="view-nombres" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" id="view-apellidos" readonly />
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <label>RUT</label>
+                            <input type="text" id="view-rut" value="21.345.678-9" readonly />
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>Curso</label>
+                            <input type="text" id="view-curso" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Estado de Tarjeta Vinculada -->
+                <div>
+                    <div class="section-subtitle">TARJETA NFC VINCULADA</div>
+
+                    <div class="nfc-banner linked">
+                        <div class="icon-badge">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <div class="nfc-banner-text">
+                            <h4 style="color: #15803d;">Tarjeta Vinculada Correctamente</h4>
+                            <p>El alumno ya posee un identificador NFC registrado en el sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="nfc-scan-area linked">
+                        <i class="bi bi-credit-card-2-front-fill"></i>
+                        <span style="font-weight: 700; color: #166534;">Tarjeta Activa</span>
+                        <small id="view-nfc-uid" style="color: #15803d; font-family: monospace; font-size: 0.85rem;">UID: 04:A2:89:1B:7C:50</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions" style="margin-top: 1.5rem;">
+                <button type="button" class="btn-cancel" id="btn-close-view">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </main>

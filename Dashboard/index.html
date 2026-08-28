@@ -1,219 +1,218 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="../LogoSAS.ico?v=1" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+        <link rel="icon" type="image/x-icon" href="../LogoSAS.ico?v=1" />
 
-    <!--Enlaces-->
+        <!--Enlaces-->
 
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <!--Navegador-->
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <!--Navegador-->
 
-    <nav class="nav-top-main">
-      <div class="title-main">
-        <!--Panel de control-->
-        <h1>Panel de control</h1>
-      </div>
-      <!-- Contenedor del menú desplegable -->
-      <div class="dropdown-admin">
-        <button>
-          <img
-            src="assets/images/foto_admin.jpg"
-            alt=""
-            height="35px"
-            width="35px"
-          />
-          <span>Administrador</span>
-        </button>
-        <!-- Opciones del menú -->
-        <div class="dropdown-content">
-          <!-- Ruta relativa hacia la carpeta landing -->
-          <a href="../landing/index.html">Cerrar sesión</a>
-        </div>
-      </div>
-    </nav>
+        <nav class="nav-top-main">
+            <div class="title-main">
+                <!--Panel de control-->
+                <h1>Panel de control</h1>
+            </div>
+            <!-- Contenedor del menú desplegable -->
+            <div class="dropdown-admin">
+                <button>
+                    <img src="assets/images/foto_admin.jpg" alt="" height="35px" width="35px" />
+                    <span>Administrador</span>
+                </button>
+                <!-- Opciones del menú -->
+                <div class="dropdown-content">
+                    <!-- Ruta relativa hacia la carpeta landing -->
+                    <a href="../landing/index.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </nav>
 
-    <!--Aside-->
-    <aside>
-      <div class="aside-title">
-        <i></i>
-        <span>School Attendance System</span>
-      </div>
+        <!--Aside-->
+        <aside>
+            <div class="aside-title">
+                <i></i>
+                <span>School Attendance System</span>
+            </div>
 
-      <nav class="aside-links">
-        <a href="#" class="nav-links" data-view="inicio.html">
-          <i class="bi bi-house-fill"></i>
-          <span>Panel de control</span>
-        </a>
+            <nav class="aside-links">
+                <a href="#" class="nav-links" data-view="inicio.html">
+                    <i class="bi bi-house-fill"></i>
+                    <span>Panel de control</span>
+                </a>
 
-        <a href="#" class="nav-links" data-view="usuarios.html">
-          <i class="bi bi-person-vcard-fill"></i>
-          <span>Estudiantes</span>
-        </a>
+                <a href="#" class="nav-links" data-view="usuarios.html">
+                    <i class="bi bi-person-vcard-fill"></i>
+                    <span>Estudiantes</span>
+                </a>
 
-        <a href="#" class="nav-links" data-view="analiticas.html">
-          <i class="bi bi-graph-up-arrow"></i>
-          <span>Analiticas</span>
-        </a>
+                <a href="#" class="nav-links" data-view="analiticas.html">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <span>Analiticas</span>
+                </a>
 
-        <a href="#" class="nav-links" data-view="reportes.html">
-          <i class="bi bi-envelope-fill"></i>
-          <span>Reportes</span>
-        </a>
+                <a href="#" class="nav-links" data-view="reportes.html">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Reportes</span>
+                </a>
 
-        <a href="#" class="nav-links" data-view="configuraciones.html">
-          <i class="bi bi-wrench"></i>
-          <span>Configuraciones</span>
-        </a>
-      </nav>
-    </aside>
+                <a href="#" class="nav-links" data-view="configuraciones.html">
+                    <i class="bi bi-wrench"></i>
+                    <span>Configuraciones</span>
+                </a>
+            </nav>
+        </aside>
 
-    <main id="container-views"></main>
+        <main id="container-views"></main>
 
-    <script>
-      window.actualizarFechaUI = function () {
-        const contenedor = document.getElementById("date");
-        if (!contenedor) return;
+        <script>
+            window.actualizarFechaUI = function () {
+                const contenedor = document.getElementById("date");
+                if (!contenedor) return;
 
-        const meses = [
-          "Enero",
-          "Febrero",
-          "Marzo",
-          "Abril",
-          "Mayo",
-          "Junio",
-          "Julio",
-          "Agosto",
-          "Septiembre",
-          "Octubre",
-          "Noviembre",
-          "Diciembre",
-        ];
+                const meses = [
+                    "Enero",
+                    "Febrero",
+                    "Marzo",
+                    "Abril",
+                    "Mayo",
+                    "Junio",
+                    "Julio",
+                    "Agosto",
+                    "Septiembre",
+                    "Octubre",
+                    "Noviembre",
+                    "Diciembre",
+                ];
 
-        const hoy = new Date();
-        contenedor.textContent = `${hoy.getDate()} ${meses[hoy.getMonth()]} ${hoy.getFullYear()}`;
-      };
+                const hoy = new Date();
+                contenedor.textContent = `${hoy.getDate()} ${meses[hoy.getMonth()]} ${hoy.getFullYear()}`;
+            };
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const container = document.getElementById("container-views");
-        const links = document.querySelectorAll(".nav-links");
-        const mainTitle = document.querySelector(".title-main h1");
+            document.addEventListener("DOMContentLoaded", () => {
+                const container = document.getElementById("container-views");
+                const links = document.querySelectorAll(".nav-links");
+                const mainTitle = document.querySelector(".title-main h1");
 
-        let currentView = "";
+                let currentView = "";
 
-        async function loadView(viewName, titleText) {
-          console.log("➡️ Intentando navegar a:", viewName);
+                async function loadView(viewName, titleText) {
+                    console.log("➡️ Intentando navegar a:", viewName);
 
-          // Quitamos la validación de currentView temporalmente para forzar la recarga
-          try {
-            container.classList.add("fade-out");
+                    // Quitamos la validación de currentView temporalmente para forzar la recarga
+                    try {
+                        container.classList.add("fade-out");
 
-            const response = await fetch(`views/${viewName}`);
-            if (!response.ok) {
-              throw new Error(
-                `❌ Error ${response.status}: No se encontró views/${viewName}`,
-              );
-            }
+                        const response = await fetch(`views/${viewName}`);
+                        if (!response.ok) {
+                            throw new Error(`❌ Error ${response.status}: No se encontró views/${viewName}`);
+                        }
 
-            const html = await response.text();
+                        const html = await response.text();
 
-            setTimeout(async () => {
-              // Inyectar HTML nuevo
-              container.innerHTML = html;
-              console.log("✅ HTML de", viewName, "inyectado correctamente.");
+                        setTimeout(async () => {
+                            // Inyectar HTML nuevo
+                            container.innerHTML = html;
+                            console.log("✅ HTML de", viewName, "inyectado correctamente.");
 
-              if (mainTitle && titleText) {
-                mainTitle.textContent = titleText;
-              }
+                            if (mainTitle && titleText) {
+                                mainTitle.textContent = titleText;
+                            }
 
-              window.actualizarFechaUI();
-              currentView = viewName;
+                            window.actualizarFechaUI();
+                            currentView = viewName;
 
-              // Si la vista es analíticas
-              if (viewName === "analiticas.html") {
-                console.log("🔍 Buscando archivo views/analiticas.js...");
-                await cargarScriptVista("views/analiticas.js");
+                            // Si la vista es analíticas
+                            if (viewName === "analiticas.html") {
+                                console.log("🔍 Buscando archivo views/analiticas.js...");
+                                await cargarScriptVista("views/analiticas.js");
 
-                console.log("⚡ Ejecutando window.inicializarAnaliticas...");
-                if (typeof window.inicializarAnaliticas === "function") {
-                  window.inicializarAnaliticas();
-                  console.log(
-                    "🎉 window.inicializarAnaliticas ejecutado con éxito.",
-                  );
-                } else {
-                  console.error(
-                    "⚠️ La función window.inicializarAnaliticas NO existe dentro de views/analiticas.js",
-                  );
+                                console.log("⚡ Ejecutando window.inicializarAnaliticas...");
+                                if (typeof window.inicializarAnaliticas === "function") {
+                                    window.inicializarAnaliticas();
+                                    console.log("🎉 window.inicializarAnaliticas ejecutado con éxito.");
+                                } else {
+                                    console.error("⚠️ La función window.inicializarAnaliticas NO existe dentro de views/analiticas.js");
+                                }
+                            }
+                            // Si la vista es usuarios
+                            else if (viewName === "usuarios.html") {
+                                console.log("🔍 Buscando archivo views/usuarios.js...");
+                                await cargarScriptVista("views/usuarios.js");
+
+                                console.log("⚡ Ejecutando window.inicializarUsuarios...");
+                                if (typeof window.inicializarUsuarios === "function") {
+                                    window.inicializarUsuarios();
+                                    console.log("🎉 window.inicializarUsuarios ejecutado con éxito.");
+                                } else {
+                                    console.warn(
+                                        "⚠️ La función window.inicializarUsuarios no fue encontrada o la lógica corre automáticamente al importar.",
+                                    );
+                                }
+                            }
+
+                            container.classList.remove("fade-out");
+                        }, 200);
+                    } catch (error) {
+                        console.error(error);
+                        container.innerHTML = `<p style="color:red;">Error al cargar la vista.</p>`;
+                        container.classList.remove("fade-out");
+                    }
                 }
-              }
 
-              container.classList.remove("fade-out");
-            }, 200);
-          } catch (error) {
-            console.error(error);
-            container.innerHTML = `<p style="color:red;">Error al cargar la vista.</p>`;
-            container.classList.remove("fade-out");
-          }
-        }
+                function cargarScriptVista(src) {
+                    return new Promise((resolve, reject) => {
+                        // Forzamos la eliminación del script anterior si existía para recargarlo
+                        const scriptViejo = document.querySelector(`script[src^="${src}"]`);
+                        if (scriptViejo) {
+                            scriptViejo.remove();
+                        }
 
-        function cargarScriptVista(src) {
-          return new Promise((resolve, reject) => {
-            // Forzamos la eliminación del script anterior si existía para recargarlo
-            const scriptViejo = document.querySelector(`script[src^="${src}"]`);
-            if (scriptViejo) {
-              scriptViejo.remove();
-            }
+                        const script = document.createElement("script");
+                        // Le agregamos timestamp para romper la caché del navegador
+                        script.src = `${src}?v=${new Date().getTime()}`;
+                        script.onload = () => {
+                            console.log("📜 Script cargado dinámicamente:", src);
+                            resolve();
+                        };
+                        script.onerror = (err) => {
+                            console.error("❌ Error al cargar el archivo .js:", src);
+                            reject(err);
+                        };
+                        document.body.appendChild(script);
+                    });
+                }
 
-            const script = document.createElement("script");
-            // Le agregamos timestamp para romper la caché del navegador
-            script.src = `${src}?v=${new Date().getTime()}`;
-            script.onload = () => {
-              console.log("📜 Script cargado dinámicamente:", src);
-              resolve();
-            };
-            script.onerror = (err) => {
-              console.error("❌ Error al cargar el archivo .js:", src);
-              reject(err);
-            };
-            document.body.appendChild(script);
-          });
-        }
+                links.forEach((link) => {
+                    link.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        const viewName = link.getAttribute("data-view");
+                        const linkText = link.querySelector("span")?.textContent.trim();
 
-        links.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const viewName = link.getAttribute("data-view");
-            const linkText = link.querySelector("span")?.textContent.trim();
+                        console.log("🖱️ Clic detectado en enlace con data-view:", viewName);
 
-            console.log("🖱️ Clic detectado en enlace con data-view:", viewName);
+                        if (viewName) {
+                            loadView(viewName, linkText);
+                        } else {
+                            console.error("⚠️ El enlace presionado no tiene el atributo data-view configurado.");
+                        }
+                    });
+                });
 
-            if (viewName) {
-              loadView(viewName, linkText);
-            } else {
-              console.error(
-                "⚠️ El enlace presionado no tiene el atributo data-view configurado.",
-              );
-            }
-          });
-        });
-
-        loadView("inicio.html", "Panel de control");
-      });
-    </script>
-  </body>
+                loadView("inicio.html", "Panel de control");
+            });
+        </script>
+    </body>
 </html>
